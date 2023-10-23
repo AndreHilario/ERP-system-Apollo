@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ProductCategory {
+  Appliances
+  Furniture
+  Refrigerators
+  Smartphones
+  Electronics
+}
+
+model Product {
+  id                Int             @id @default(autoincrement())
+  name              String
+  description       String
+  color             String
+  product_category  ProductCategory
+  price             Decimal
+  promotional_price Decimal         
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+}
