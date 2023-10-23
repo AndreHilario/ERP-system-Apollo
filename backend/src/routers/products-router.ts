@@ -2,7 +2,7 @@ import { validateBody, validateParams } from "../middlewares/validation-middlewa
 import { deleteProduct, insertProduct, listAllProducts } from "../controllers/products-controller";
 import { Router } from "express";
 import { productSchema } from "../schemas/product-schema";
-import { paramsSchema } from "@/schemas/params-schema";
+import { paramsSchema } from "../schemas/params-schema";
 
 const productsRouter = Router();
 
