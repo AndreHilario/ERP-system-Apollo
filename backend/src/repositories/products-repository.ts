@@ -18,9 +18,27 @@ async function listProductsDB() {
     return await prisma.product.findMany();
 }
 
+async function deleteProductDB(id: number) {
+    return await prisma.product.delete({
+        where: {
+            id,
+        },
+    });
+}
+
+async function findProductByIdDB(id: number) {
+    return await prisma.product.findFirst({
+        where: {
+            id,
+        },
+    });
+}
+
 const productsRepository = {
     insertProductDB,
-    listProductsDB
+    listProductsDB,
+    deleteProductDB,
+    findProductByIdDB
 };
 
 export default productsRepository;

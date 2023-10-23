@@ -23,9 +23,12 @@ export async function listAllProducts(req: Request, res: Response) {
 }
 
 export async function deleteProduct(req: Request, res: Response) {
+    const id = Number(req.params.id);
     try {
-
+        const deleted = await productsService.deleteProduct(id);
+        return res.status(httpStatus.NO_CONTENT).send(deleted);
     } catch (error) {
-
+        if(error.name === "NotFoundError") return res.status(httpStatus.NOT_FOUND).send(error.message);
+        else return res.status(httpStatus.BAD_REQUEST).send(error.message);
     }
 }
