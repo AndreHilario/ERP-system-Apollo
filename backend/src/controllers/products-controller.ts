@@ -15,9 +15,10 @@ export async function insertProduct(req: Request, res: Response) {
 
 export async function listAllProducts(req: Request, res: Response) {
     try {
-
+        const products = await productsService.getProducts();
+        return res.status(httpStatus.OK).send(products);
     } catch (error) {
-
+        return res.status(httpStatus.BAD_REQUEST).send(error.message);
     }
 }
 

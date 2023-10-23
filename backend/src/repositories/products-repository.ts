@@ -14,8 +14,13 @@ async function insertProductDB(data: CreateProduct, promotional_price: number) {
     });
 }
 
+async function listProductsDB() {
+    return await prisma.product.findMany();
+}
+
 const productsRepository = {
-    insertProductDB
+    insertProductDB,
+    listProductsDB
 };
 
 export default productsRepository;

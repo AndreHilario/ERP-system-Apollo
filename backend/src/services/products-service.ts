@@ -8,8 +8,13 @@ async function createProduct(data: CreateProduct) {
     return product;
 }
 
+async function getProducts() {
+    const allProducts = await productsRepository.listProductsDB();
+    return allProducts;
+}
 const productsService = {
-    createProduct
+    createProduct,
+    getProducts
 };
 
 export default productsService;
