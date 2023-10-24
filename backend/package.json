@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "seed": "prisma db seed",
-    "start": "cross-env NODE_ENV=production npm run migration:run && npm run seed && node dist/server.js",
+    "start": "npm run migration:run && npm run seed && node dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node ./src/server.ts",
     "build": "tsc -p tsconfig.build.json",
     "migration:generate": "npm run dev:load-envs prisma migrate dev",
