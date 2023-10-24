@@ -9,6 +9,6 @@ const productsRouter = Router();
 productsRouter
     .post("/", validateBody(productSchema), insertProduct)
     .get("/", listAllProducts)
-    .delete("/:id", validateParams(paramsSchema), deleteProduct)
+    .delete("/:id", validateParams(paramsSchema), deleteProduct);
 
 export { productsRouter };

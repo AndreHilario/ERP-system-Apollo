@@ -11,7 +11,7 @@ app
     .use(cors())
     .use(express.json())
     .get("/health", (_req, res) => res.send("OK"))
-    .use("/products", productsRouter)
+    .use("/products", productsRouter);
 
 export function init(): Promise<Express> {
     connectDb();

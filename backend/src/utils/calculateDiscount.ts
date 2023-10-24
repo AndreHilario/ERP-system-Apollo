@@ -6,7 +6,7 @@ const promotionalTable = {
     Electronics: 4.3,
     Appliances: 5,
     Refrigerators: 7.5
-}
+};
 
 export function calculateDiscount(price: number, category: ProductCategory) {
     const percentage = promotionalTable[category] / 100;
