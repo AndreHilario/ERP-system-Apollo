@@ -16,7 +16,9 @@
     "test:migration:generate": "npm run test:load-envs prisma migrate dev",
     "test:watch": "jest --watch --passWithNoTests --runInBand",
     "test:load-envs": "dotenv -e .env.test",
-    "test:coverage": "jest --coverage --runInBand"
+    "test:coverage": "jest --coverage --runInBand",
+    "lint": "eslint .",
+    "lint:staged": "lint-staged"
   },
   "keywords": [],
   "author": "André Hilário",
