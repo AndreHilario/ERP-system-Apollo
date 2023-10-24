@@ -80,7 +80,7 @@ $ npm run dev:seed
 
 ```bash
 # build
-$ npm run start
+$ npm run build
 
 # development
 $ npm run dev
@@ -128,6 +128,27 @@ $ npm run test
 # coverage
 $ npm run test:coverage
 ```
+
+## Questions
+
+1. **What would be your first improvements if you had more implementation time?**
+  - **User Registration, Login, and Token Handling**: Implementing user registration and authentication, along with token-based authorization, is a fundamental security and user management improvement. This would ensure that only authenticated users can access protected routes.
+
+  - **Additional Testing**: Expanding the test suite, including unit tests to thoroughly validate business rules and services, is a good practice for maintaining code quality and reliability.
+
+  - **Caching for Database Performance**: Caching with a tool like Redis can significantly improve API performance by reducing the load on the database. This optimization can lead to faster response times and better scalability.
+
+  - **Comprehensive Documentation**: Creating thorough API documentation, including explanations of features and required data formats, is valuable for both internal and external users. It makes it easier for developers to understand and interact with your API.
+
+2. **Thinking about your solution, how would maintenance be in case of adding new product categories? What would need to be changed?**
+  - It would be a minor update, meaning that only two changes would be needed. First, in the `schema.prisma` file, you would add the new values to the **enum ProductCategory** object, then all the typing and values ​​would be added correctly. In the `product-schema.ts` file, you would add the new category values to the **valid()** function of Joi, following the existing pattern for the object. Then, the change would involve validating the incoming request.
+
+3. **What changes would need to be made to support updates in the product category's discount percentage so that whenever the discount percentage was changed, the new price would be reflected in all products of the same category?**
+  - **Price Recalculation for Products:** Whenever the discount percentage for a category is changed, you will need to recalculate the prices of all products that belong to that category. This can be done through a batch process that iterates through all products in the category and updates their prices based on the new discount percentage.
+
+  - **Updating the Discount Percentage for the Category:** This could be achieved through a function or endpoint in the API that allows the update of the discount percentage for a specific category. This function or endpoint should be accessible only to authorized users.
+
+  - **Storing the Discount Percentage:** You need a way to store the discount percentage for each category. One option would be to use a database where these discount values are stored. This will allow you to access these discount values when calculating product prices.
 
 ## Support
 
