@@ -1,13 +1,11 @@
 import Header from "../../constants/Header";
-import Form from "../../components/Form/Form";
-import ProductsTable from "../../components/Table/ProductsTable";
+import Sidebar from "../../components/Sidebar/Sidebar";
 
 export default function Home() {
     return (
         <>
             <Header />
-            <Form />
-            <ProductsTable />
+            <Sidebar />
         </>
     );
 }

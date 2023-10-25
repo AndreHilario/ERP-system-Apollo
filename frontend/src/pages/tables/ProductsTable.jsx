@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Space, Table } from 'antd';
 import useListProducts from "../../hooks/api/useList";
 import { formatCurrency } from "../../helpers/formatCurrency";
+import Header from "../../constants/Header";
 
 export default function ProductsTable() {
     const [products, setProducts] = useState([]);
@@ -66,13 +67,15 @@ export default function ProductsTable() {
 
     return (
         <>
+            <Header />
             <Space
                 style={{
                     marginBottom: 16,
+                    marginTop: 20
                 }}
             >
-                <Button onClick={clearFilters}>Clear filters</Button>
-                <Button onClick={clearAll}>Clear filters and sorters</Button>
+                <Button onClick={clearFilters}>Limpar filtros</Button>
+                <Button onClick={clearAll}>Limpar tudo</Button>
             </Space>
             <Table
                 style={{ backgroundColor: 'lightblue' }}
