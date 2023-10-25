@@ -3,11 +3,15 @@ import { Button, Space, Table } from 'antd';
 import useListProducts from "../../hooks/api/useList";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import Header from "../../constants/Header";
+import Delete from "../../components/Delete/Delete";
+import styled from "styled-components";
+import { FontSizeOutlined } from "@ant-design/icons";
 
 export default function ProductsTable() {
     const [products, setProducts] = useState([]);
     const [filteredInfo, setFilteredInfo] = useState({});
     const [sortedInfo, setSortedInfo] = useState({});
+
     const { listProduct } = useListProducts();
 
     useEffect(() => {
@@ -43,12 +47,25 @@ export default function ProductsTable() {
                 title: key.toUpperCase(),
                 dataIndex: key,
                 key,
-                sorter: (a, b) => a[key] - b[key],
+                sorter: (a, b) => {
+                    if (!isNaN(a[key]) && !isNaN(b[key])) {
+                        return Number(a[key]) - Number(b[key]);
+                    } else {
+                        return a[key].localeCompare(b[key]);
+                    }
+                },
                 sortOrder: sortedInfo.columnKey === key ? sortedInfo.order : null,
                 ellipsis: true,
                 render: (text, record) => {
                     if (key === 'price' || key === 'promotional_price') {
                         return formatCurrency(record[key]);
+                    } else if (key === 'name') {
+                        return (
+                            <>
+                                <span>{text}</span><br />
+                                <Delete id={record.id} products={products} setProducts={setProducts} />
+                            </>
+                        );
                     }
                     return text;
                 },
@@ -74,15 +91,23 @@ export default function ProductsTable() {
                     marginTop: 20
                 }}
             >
-                <Button onClick={clearFilters}>Limpar filtros</Button>
-                <Button onClick={clearAll}>Limpar tudo</Button>
+                <StyledButton onClick={clearFilters}>Limpar filtros</StyledButton>
+                <StyledButton onClick={clearAll}>Limpar tudo</StyledButton>
             </Space>
             <Table
-                style={{ backgroundColor: 'lightblue' }}
                 columns={columns}
                 dataSource={products}
                 onChange={handleChange}
+                bordered
             />
         </>
     );
 }
+
+const StyledButton = styled(Button)`
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+`;
+

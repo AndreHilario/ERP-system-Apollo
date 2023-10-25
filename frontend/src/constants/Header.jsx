@@ -30,10 +30,10 @@ const BackGround = styled.div`
 `;
 
 const Title = styled.h1`
-    color: #fff;
-    font-family: cursive;
     a {
         text-decoration: none; 
+        color: #fff;
+        font-family: cursive;
     }
 
 `;
