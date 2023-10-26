@@ -1,99 +1,99 @@
-import { useState } from "react";
-import styled from "styled-components";
-import ButtonForm from "../../components/Buttons/ButtonForm";
-import useInsertProduct from "../../hooks/api/useInsert";
-import Header from "../../constants/Header";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useState } from 'react';
+import styled from 'styled-components';
+import ButtonForm from '../../components/Buttons/ButtonForm';
+import useInsertProduct from '../../hooks/api/useInsert';
+import Header from '../../constants/Header';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Form() {
-    const [form, setForm] = useState({ name: '', description: '', color: '', product_category: '', price: '' });
-    const [disabled, setDisabled] = useState(false);
+  const [form, setForm] = useState({ name: '', description: '', color: '', product_category: '', price: '' });
+  const [disabled, setDisabled] = useState(false);
 
-    const { name, description, color, product_category, price } = form;
-    const { insertProduct } = useInsertProduct();
+  const { name, description, color, product_category, price } = form;
+  const { insertProduct } = useInsertProduct();
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    function handleForm(e) {
-        setForm({ ...form, [e.target.name]: e.target.value });
+  function handleForm(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  async function getProductInfos(e) {
+    e.preventDefault();
+    setDisabled(true);
+
+    try {
+      await insertProduct({ ...form, price: Number(price) });
+      toast.success('Produto registrado com sucesso!', {
+        style: { fontSize: 20 },
+      });
+      setDisabled(false);
+      navigate('/');
+    } catch (error) {
+      toast.error('Erro ao registrar o produto!');
+      setDisabled(false);
     }
+  }
 
-    async function getProductInfos(e) {
-        e.preventDefault();
-        setDisabled(true);
-
-        try {
-            await insertProduct({ ...form, price: Number(price) });
-            toast.success("Produto registrado com sucesso!", {
-                style: { fontSize: 20 }
-            });
-            setDisabled(false);
-            navigate("/");
-        } catch (error) {
-            toast.error("Erro ao registrar o produto!");
-            setDisabled(false);
-        }
-    }
-
-    return (
-        <>
-            <Header />
-            <FormContainer>
-                <FormControlWrapper>
-                    <FormControl onSubmit={getProductInfos}>
-                        <Input
-                            name="name"
-                            value={name}
-                            type="text"
-                            onChange={handleForm}
-                            placeholder="Name"
-                            disabled={disabled}
-                            required
-                        />
-                        <Input
-                            name="description"
-                            value={description}
-                            type="text"
-                            onChange={handleForm}
-                            placeholder="Description"
-                            disabled={disabled}
-                            required
-                        />
-                        <Input
-                            name="color"
-                            value={color}
-                            type="text"
-                            onChange={handleForm}
-                            placeholder="Color"
-                            disabled={disabled}
-                            required
-                        />
-                        <Input
-                            name="product_category"
-                            value={product_category}
-                            type="text"
-                            onChange={handleForm}
-                            placeholder="Product_category"
-                            disabled={disabled}
-                            required
-                        />
-                        <Input
-                            name="price"
-                            value={price}
-                            type="number"
-                            onChange={handleForm}
-                            placeholder="Price"
-                            disabled={disabled}
-                            required
-                        />
-                        <ButtonForm disabled={disabled} />
-                    </FormControl>
-                </FormControlWrapper>
-            </FormContainer>
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <FormContainer>
+        <FormControlWrapper>
+          <FormControl onSubmit={getProductInfos}>
+            <Input
+              name="name"
+              value={name}
+              type="text"
+              onChange={handleForm}
+              placeholder="Name"
+              disabled={disabled}
+              required
+            />
+            <Input
+              name="description"
+              value={description}
+              type="text"
+              onChange={handleForm}
+              placeholder="Description"
+              disabled={disabled}
+              required
+            />
+            <Input
+              name="color"
+              value={color}
+              type="text"
+              onChange={handleForm}
+              placeholder="Color"
+              disabled={disabled}
+              required
+            />
+            <Input
+              name="product_category"
+              value={product_category}
+              type="text"
+              onChange={handleForm}
+              placeholder="Product_category"
+              disabled={disabled}
+              required
+            />
+            <Input
+              name="price"
+              value={price}
+              type="number"
+              onChange={handleForm}
+              placeholder="Price"
+              disabled={disabled}
+              required
+            />
+            <ButtonForm disabled={disabled} />
+          </FormControl>
+        </FormControlWrapper>
+      </FormContainer>
+    </>
+  );
 }
 
 const FormContainer = styled.div`

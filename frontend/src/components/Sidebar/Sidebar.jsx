@@ -1,20 +1,20 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
-    return (
-        <SidebarContainer>
-            <SidebarTitle>Bem-vindo(a) ao sistema ERP da Apollo Solutions</SidebarTitle>
-            <SidebarMain>
-                <Link to="/tables">
-                    <SidebarTable>Veja os produtos</SidebarTable>
-                </Link>
-                <Link to="/register">
-                    <SidebarRegister>Registre seu novo produto</SidebarRegister>
-                </Link>
-            </SidebarMain>
-        </SidebarContainer>
-    );
+  return (
+    <SidebarContainer>
+      <SidebarTitle>Bem-vindo(a) ao sistema ERP da Apollo Solutions</SidebarTitle>
+      <SidebarMain>
+        <Link to="/tables">
+          <SidebarTable>Veja os produtos</SidebarTable>
+        </Link>
+        <Link to="/register">
+          <SidebarRegister>Registre seu novo produto</SidebarRegister>
+        </Link>
+      </SidebarMain>
+    </SidebarContainer>
+  );
 }
 
 const SidebarContainer = styled.div`
@@ -27,7 +27,7 @@ const SidebarTitle = styled.h2`
     color: #fff;
     font-size: 26px;
     padding: 10px 100px;
-`
+`;
 const SidebarMain = styled.main`
     display: flex;
     flex-direction: row;

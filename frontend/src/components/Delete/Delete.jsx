@@ -1,28 +1,35 @@
-import useDeleteProduct from "../../hooks/api/useDelete";
-import { DeleteOutlined } from "@ant-design/icons";
-import { toast } from "react-toastify";
+import useDeleteProduct from '../../hooks/api/useDelete';
+import { DeleteOutlined } from '@ant-design/icons';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PropTypes from 'prop-types';
 
 export default function Delete({ id, products, setProducts }) {
-    const { deleteProduct } = useDeleteProduct();
+  const { deleteProduct } = useDeleteProduct();
 
-    const handleDeleteProduct = async () => {
-        if (window.confirm(`O produto será apagado permanentemente`)) {
-            try {
-                await deleteProduct(id);
-                toast.success("Produto deletado com sucesso!", {
-                    style: { fontSize: 20 }
-                });
-                setProducts(products);
-            } catch (error) {
-                toast.error("Erro ao deletar este produto!", {
-                    style: { fontSize: 20 }
-                });
-            }
-        }
+  const handleDeleteProduct = async () => {
+    if (window.confirm('O produto será apagado permanentemente')) {
+      try {
+        await deleteProduct(id);
+        toast.success('Produto deletado com sucesso!', {
+          style: { fontSize: 20 },
+        });
+        setProducts(products);
+      } catch (error) {
+        toast.error('Erro ao deletar este produto!', {
+          style: { fontSize: 20 },
+        });
+      }
     }
+  };
 
-    return (
-        <DeleteOutlined onClick={() => handleDeleteProduct(id)} />
-    );
+  return (
+    <DeleteOutlined onClick={() => handleDeleteProduct(id)} />
+  );
 }
+
+Delete.propTypes = {
+  id: PropTypes.number.isRequired,
+  products: PropTypes.array.isRequired,
+  setProducts: PropTypes.func.isRequired,
+};

@@ -1,18 +1,18 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export default function Header() {
-    return (
-        <HeaderContainer>
-            <BackGround>
-                <Title>
-                    <Link to="/">
+  return (
+    <HeaderContainer>
+      <BackGround>
+        <Title>
+          <Link to="/">
                         APOLLO SOLUTIONS - ERP system
-                    </Link>
-                </Title>
-            </BackGround>
-        </HeaderContainer>
-    );
+          </Link>
+        </Title>
+      </BackGround>
+    </HeaderContainer>
+  );
 }
 
 const HeaderContainer = styled.header`

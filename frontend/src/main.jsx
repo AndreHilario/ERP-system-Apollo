@@ -10,4 +10,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ToastContainer />
     <App />
   </React.StrictMode>,
-)
+);
