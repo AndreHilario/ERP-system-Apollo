@@ -26,6 +26,8 @@ _This project consists of implementing an ERP system for customers to register n
 </table>
 Try it in deploy at: <a href="https://erp-system-apollo.vercel.app/">ERP-System</a>
 
+Try it in API at: https://erp-system-api.onrender.com
+
 # Backend
 ## About this project
 The ERP system is a powerful REST API designed to be a place for registering new products. With it, you can register products as you wish and receive the discounted price through each registered product category.
