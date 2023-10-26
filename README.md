@@ -1,8 +1,32 @@
 # ERP system - Apollo Solutions
 _This project consists of implementing an ERP system for customers to register new products. The idea is to allow new products to be registered in the customer's ERP system, including all the product details and the discount that each product category will receive._. 
 
-Try it in deploy at: https://erp-system-apollo.vercel.app/
+<table>
+  <tr>
+    <td align="center">
+      <img src="./frontend/src/assets/home.png" height="300" />
+      <br />
+      Home page
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./frontend/src/assets/register.png" height="300" />
+      <br />
+      Register page
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./frontend/src/assets/tables.png" height="320" />
+      <br />
+      Tables page
+    </td>
+  </tr>
+</table>
+Try it in deploy at: <a href="https://erp-system-apollo.vercel.app/">ERP-System</a>
 
+# Backend
 ## About this project
 The ERP system is a powerful REST API designed to be a place for registering new products. With it, you can register products as you wish and receive the discounted price through each registered product category.
 
@@ -28,7 +52,7 @@ Enterprise Resource Planning (ERP) is a software system that helps you manage th
 
 In summary, this project has given me a valuable learning experience, allowing me to delve into Node.js, understand and navigate the complexities of an ERP, all within the context of an API.
 
-## Tecnologias
+## Technologies
 The following badges represent the tools and technologies used in the project:
 
 - [![Node.js](https://img.shields.io/badge/Node.js-Active-brightgreen)](https://nodejs.org/)
@@ -86,25 +110,6 @@ $ npm run build
 $ npm run dev
 ```
 
-## How to run with Docker
-
-1. If you don't have Docker installed, you need to install it on your machine first. Visit [docker](https://www.docker.com/) for more information.
-
-### Building the image and running:
-
-2. Everything through the `docker-compose` file, and for this, it is necessary that the `.env.development` file is configured as specified above and the mapped ports are available.
-
-3. Run the `docker-compose` file:
-```bash
-# With logs
-docker compose up
-
-# Without logs
-docker compose up -d
-```
-
-4. The application will be accessible at `http://localhost:8080` in your browser, as per the port mapped in the YAML file.
-
 ## How to run tests
 
 1. Follow the steps in the last section
@@ -129,12 +134,101 @@ $ npm run test
 $ npm run test:coverage
 ```
 
+# Frontend
+
+## About this project
+
+This project is a web application based on React with Vite, offering features for managing and showcasing various products. It provides functionalities such as product registration, viewing all products, and the ability to filter and sort products as needed. Users can register new products, access a registration form, and view a table displaying all products. The table allows users to apply filters, sort the products, and delete entries as required:
+
+  - **Home** (`/`)
+    - Users have the option to register new products or view information about all products and filter as desired.
+
+  - **Register** (`/register`)
+    - Registration form.
+
+  - **Tables** (`/tables`)
+    - View all products in a table, with the ability to filter, sort, and delete values.
+
+## Technologies
+The following topics represent the tools and technologies used in the project's construction:
+
+- [![React](https://img.shields.io/badge/React-JavaScript%20Library-blue)](https://reactjs.org/)
+
+- [![Axios](https://img.shields.io/badge/Axios-HTTP%20Client-green)](https://axios-http.com/)
+
+- [![Styled-components](https://img.shields.io/badge/Styled--components-CSS%20in%20JS-ff69b4)](https://styled-components.com/)
+
+- [![React Router](https://img.shields.io/badge/React%20Router-Router%20Library-orange)](https://reactrouter.com/)
+
+- [![Vite](https://img.shields.io/badge/Vite-Bundler%20to%20JS-yellowgreen)](https://vitejs.dev/)
+
+- [![react-toastify](https://img.shields.io/badge/react--toastify-Toast%20Notifications%20for%20React-blue)](https://www.npmjs.com/package/react-toastify)
+
+- [![antd](https://img.shields.io/badge/antd-Ant%20Design-blue)](https://www.npmjs.com/package/antd)
+
+- [![eslint](https://img.shields.io/badge/eslint-Format-brightred)](https://eslint.org/)
+
+- [![Docker](https://img.shields.io/badge/Docker-Deploy-blue)](https://www.docker.com/)
+
+## How to run for development
+
+1. Clone this repository
+2. Install all dependencies
+
+```bash
+npm i
+```
+
+3. Populate the `.env` file based on`.env.example`. The `VITE_API_BASE_URL` should follow the instructions provided in the file
+
+4. Running the front-end in a development environment:
+
+```bash
+npm run dev
+```
+
+### Building and launching for production.
+
+```bash
+npm run build
+npm preview
+```
+
+6. Using the ESLint tool for code formatting:
+
+```bash
+#Using the ESLint tool for code linting and error detection
+npm run lint
+
+#Using the ESLint tool to fix possible errors
+npm run lint:fix
+```
+
+## How to run the project with Docker
+
+1. If you don't have Docker installed, you need to install it on your machine first. Visit [docker](https://www.docker.com/) for more information.
+
+### Building the image and running:
+
+2. Everything through the `docker-compose` file, and for this, it is necessary that the `.env.development` file is configured as specified above and the mapped ports are available.
+
+3. Run the `docker-compose` file on the main repository file:
+```bash
+# With logs
+docker compose up
+
+# Without logs
+docker compose up -d
+```
+
+4. The application will be accessible at `http://localhost:8080` in your browser, as per the port mapped in the YAML file.
+
 ## Questions
 
 1. **What would be your first improvements if you had more implementation time?**
-  - **User Registration, Login, and Token Handling**: Implementing user registration and authentication, along with token-based authorization, is a fundamental security and user management improvement. This would ensure that only authenticated users can access protected routes.
+  - **User Registration, Login, and Token Handling**: Implementing user registration and authentication, along with token-based authorization, is a fundamental security and user management improvement. This would ensure that only authenticated users can access protected routes. Implemented more routes and details to the frontend, such as the application's main page.
 
-  - **Additional Testing**: Expanding the test suite, including unit tests to thoroughly validate business rules and services, is a good practice for maintaining code quality and reliability.
+  - **Additional Testing**: Expanding the test suite, including unit tests to thoroughly validate business rules and services, is a good practice for maintaining code quality and reliability. Also add tests to the frontend.
 
   - **Caching for Database Performance**: Caching with a tool like Redis can significantly improve API performance by reducing the load on the database. This optimization can lead to faster response times and better scalability.
 
@@ -162,4 +256,4 @@ Node is an open-source project licensed under MIT. It can grow thanks to sponsor
 
 ## Licença
 
-Node is [MIT licensed](LICENSE)
+This project is [MIT licensed](LICENSE)
