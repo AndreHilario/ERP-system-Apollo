@@ -1,7 +1,7 @@
 # ERP system - Apollo Solutions
 _This project consists of implementing an ERP system for customers to register new products. The idea is to allow new products to be registered in the customer's ERP system, including all the product details and the discount that each product category will receive._. 
 
-Try it out API at: https://erp-system-api.onrender.com
+Try it in deploy at: https://erp-system-apollo.vercel.app/
 
 ## About this project
 The ERP system is a powerful REST API designed to be a place for registering new products. With it, you can register products as you wish and receive the discounted price through each registered product category.
@@ -103,7 +103,7 @@ docker compose up
 docker compose up -d
 ```
 
-4. The application will be accessible at `http://localhost:4001` in your browser, as per the port mapped in the YAML file.
+4. The application will be accessible at `http://localhost:8080` in your browser, as per the port mapped in the YAML file.
 
 ## How to run tests
 
