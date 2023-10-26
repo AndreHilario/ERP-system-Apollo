@@ -4,6 +4,8 @@ import ButtonForm from "../../components/Buttons/ButtonForm";
 import useInsertProduct from "../../hooks/api/useInsert";
 import Header from "../../constants/Header";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Form() {
     const [form, setForm] = useState({ name: '', description: '', color: '', product_category: '', price: '' });
@@ -23,18 +25,14 @@ export default function Form() {
         setDisabled(true);
 
         try {
-            const body = {
-                name,
-                description,
-                color,
-                product_category,
-                price: Number(price)
-            };
-            await insertProduct(body);
+            await insertProduct({ ...form, price: Number(price) });
+            toast.success("Produto registrado com sucesso!", {
+                style: { fontSize: 20 }
+            });
             setDisabled(false);
             navigate("/");
         } catch (error) {
-            alert(error.message);
+            toast.error("Erro ao registrar o produto!");
             setDisabled(false);
         }
     }
